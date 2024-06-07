@@ -1,0 +1,93 @@
+
+# ASSIGNMENT-1
+
+create database company;
+use company;
+
+create table employee
+(
+id int  primary key ,
+name varchar (100),
+email varchar(100) unique,
+mobile varchar(10),
+salary decimal(10,2),
+department varchar(100),
+manager_id int,
+city varchar(100),
+status tinyint
+);
+
+insert into employee(id, name, email, mobile, city, salary, department, manager_id, status) values
+(101, 'Suresh', 'suresh@gmail.com', '6432178234', 'Bhopal', 20000.00, 'HR', 103, 0),
+  (102, 'Rachna', 'rachna@gmail.com', '9756438923', 'Indore', 10000.00, 'Account', 101, 1),
+  (103, 'Vivek', 'vivek@yahoo.com', '6245679824', 'Bhopal', 15000.00, 'HR', 102, 0);
+  select * from employee;
+  
+  update employee set name='ariz', email= 'ariz@gmail.com', mobile='8555906912',city='jabalpur',salary='8000.00',department='IT',manager_id=1,status=1
+  where id= 101;
+  update employee set name='kamran', email= 'kamran@gmail.com', mobile='8989898989',city='rewa',salary='18000.00',department='Sales',manager_id=2,status=0
+  where id= 102;
+  update employee set name='sameer', email= 'sameer@gmail.com', mobile='8585858585',city='khandwa',salary='28000.00',department='Marketing',manager_id=3,status=null
+  where id= 103;
+  select * from employee;
+  
+  delete  from employee where id =103;
+   select * from employee;
+   
+   
+#ASSIGNMENT 2 -
+
+create database company2;
+use company2;
+
+create table employee2
+(
+id int auto_increment primary key ,
+name varchar (100),
+email varchar(100) unique,
+mobile varchar(10),
+salary decimal(10,2),
+department varchar(100),
+manager_id int,
+city varchar(100),
+status tinyint
+);
+
+insert into employee2(id, name, email, mobile, city, salary, department, manager_id, status) values
+(101, 'Suresh', 'suresh@gmail.com', '6432178234', 'Bhopal', 20000.00, 'HR', 103, 0),
+  (102, 'Rachna', 'rachna@gmail.com', '9756438923', 'Indore', 10000.00, 'Account', 101, 1),
+  (103, 'Vivek', 'vivek@yahoo.com', '6245679824', 'Bhopal', 15000.00, 'HR', 102, 0);
+  select * from employee2;
+  
+
+SELECT * FROM employee2
+WHERE city = 'Bhopal';
+
+
+SELECT * FROM employee2
+ORDER BY city DESC;
+
+
+SELECT * FROM employee2
+WHERE city = 'Indore' AND department = 'Account';
+
+
+SELECT * FROM employee2
+WHERE city IS NULL OR city = '';
+
+
+SELECT * FROM employee2
+WHERE city LIKE 'b%';
+
+
+SELECT * FROM employee2
+WHERE salary NOT BETWEEN 10000 AND 12000;
+
+
+SELECT 
+    CASE
+        WHEN SUM(status) = 0 THEN 'We have rows with NULL!!!'
+        ELSE 'We do not have rows with NULL!!!'
+    END AS message
+FROM employee2;
+
